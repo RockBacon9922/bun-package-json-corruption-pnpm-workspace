@@ -5,6 +5,7 @@ on:
     branches:
       - main
 
+
 jobs:
   run-poc:
     runs-on: ubuntu-latest
@@ -16,7 +17,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 11
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -26,6 +27,12 @@ jobs:
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
+
+      - name: Print tool versions
+        run: |
+          node --version
+          pnpm --version
+          bun --version
 
       - name: Run POC
         run: ./poc.sh
